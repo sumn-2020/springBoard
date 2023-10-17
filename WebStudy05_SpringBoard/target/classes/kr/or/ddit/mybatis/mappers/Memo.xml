@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ddit.memo.dao.MemoDAO">
+
+	<!--  목록     -->
+	<select id="selectMemo" parameterType="string" resultType="kr.or.ddit.vo.MemoVO">
+	select CODE, WRITER, CONTENT, DATE1
+	from TBL_MEMO
+	</select>
+	
+	<!-- 목록추가 -->
+	<insert id="insertMemo" parameterType="kr.or.ddit.vo.MemoVO">
+	insert into TBL_MEMO (CODE, WRITER, CONTENT, DATE1)
+	VALUES (memo_seq2.NEXTVAL, #{writer}, #{content}, SYSDATE)
+	</insert>
+	
+	
+	<!--  상세페이지   -->
+	<select id="selectMemoDetail" parameterType="string" resultType="kr.or.ddit.vo.MemoVO">
+	select CODE, WRITER, CONTENT, DATE1
+	from tbl_memo
+	where code = #{code}
+	</select>
+	
+	
+	<!--  -->
+
+
+
+</mapper>

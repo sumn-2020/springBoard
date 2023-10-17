@@ -1,0 +1,47 @@
+@charset "UTF-8";
+/*  common */
+html{font-size:16px;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,
+p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,
+em,img,ins,kbd,q,s,samp,small,strike,strong,
+sub,sup,tt,var,b,u,i,center,dl,dt,dd,
+fieldset,form,label,legend,table,
+caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,embed,figure, 
+figcaption,footer,header,hgroup,
+menu,nav,output,ruby,section,summary,time,mark,audio,video{letter-spacing: -0.02rem; margin:0;padding:0;border:0;}
+p,span,a{ font-weight:inherit; }
+h2 p, h2 span, h2 a{ font-weight:inherit; }
+
+/* HTML5 display-role reset for older browsers */
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body{overflow-y:scroll;font-weight:400; word-wrap:break-word; word-break:keep-all; color:#666;}
+body,button,input,select,textarea,body h1,body h2,body h3,body h4,body h5,body h6,
+body .h1,body .h2,body .h3,body .h4,body .h5,body .h6{}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+hr{display:none;height:0;-moz-box-sizing:content-box;box-sizing:content-box}
+em,address{font-style:normal}
+ul,ol{list-style:none; list-style-image:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+button{border:0;cursor:pointer;}
+img{max-width:100%;border:0;}
+
+caption, legend{overflow:hidden;width:0;height:0;font-size:0;line-height:0}
+textarea{resize:none;}
+textarea.vert{resize:vertical;}
+a {color: #333;}
+.dropdown-toggle:focus,
+a:focus,button:focus{outline:thin dotted}
+a:active,a:hover,button:active,button:hover{outline:0 none}
+
+
+
+/* 메인시작 */
+main {margin-top: 50px !important;}
+
+.memoList-wrap > li{ margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; padding: 25px 35px;}
+.memoList-wrap > li .code, .memoList-wrap > li .content {display: block;}
+.memoList-wrap > li .content {font-size: 18px; padding-bottom: 11px; text-decoration: none; color: #000;}
+.memoList-wrap .info-bottom > * {color: #a7a7a7; font-style: normal;font-size: 12px;}
+
