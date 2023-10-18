@@ -6,24 +6,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<h1>등록</h1>
+<h1>수정</h1>
 
 
-<form method="post" action="${pageContext.request.contextPath}/memo/form.do">
+
+<form action="${pageContext.request.contextPath}/memo/formEdit" method="post">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<ul>
-		<li>writer : <input type="text" name="writer" placeholder="wrtier" /></li>
-		<li>content : <input type="text" name="content" placeholder="content" /></li>
-		
-		<c:set var="today" value="<%=new java.util.Date()%>" />
-		<c:set var="date"><fmt:formatDate value="${today}" pattern="yyyy/MM/dd" /></c:set> 
-		<li>date : <c:out value="${date}" /></li>
+		<li>writer : <input type="text" name="writer" value="${memoDetail.writer}" /></li>
+		<li>content : <input type="text" name="content" value="${memoDetail.content}" /></li>
+		<li>date : <c:out value="${memoDetail.date1}" /></li>
 	</ul>
 	<div class="btn-wrap right">
 		<a href="${pageContext.request.contextPath}/memo/memoList.do">취소</a>
 		<button type="submit">저장</button>
 	</div>
-</form>
+</form> 
 
 
 <a href="${pageContext.request.contextPath}/memo/memoList.do">목록</a>

@@ -55,6 +55,21 @@ public class MemoServiceImpl implements MemoService{
 		int rowcnt = memoDAO.insertMemo(memoVO);
 		return rowcnt;
 	}
+
+
+	//수정페이지 
+	@Override
+	public int modifyMemo(MemoVO memoVO) {
+		int rowcnt = memoDAO.updateMemo(memoVO);
+		return rowcnt;
+	}
+
+
+	
+	
+	
+	
+	
 	
 	
 	

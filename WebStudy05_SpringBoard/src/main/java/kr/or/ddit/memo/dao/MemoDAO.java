@@ -47,6 +47,11 @@ public interface MemoDAO {
 	
 	
 	
-
+	/**
+	 * 수정페이지 select
+	 * @param memoVO
+	 * @return
+	 */
+	public int updateMemo(MemoVO memoVO);
 	
 }

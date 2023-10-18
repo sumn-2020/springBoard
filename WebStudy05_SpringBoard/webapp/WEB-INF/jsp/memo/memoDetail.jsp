@@ -14,6 +14,14 @@ ${memoDetail.date1}
 
 
 
-<button type="button">수정</button>
+<button type="button" onclick="f_moveedit()">수정</button>
 <button type="button">삭제</button>
 <button type="button">목록</button>
+
+
+<script>
+function f_moveedit() {
+ 	let url = "${pageContext.request.contextPath}/memo/formEdit/${memoDetail.code}?code=${memoDetail.code}";
+ 	location.href = url;
+}
+</script>

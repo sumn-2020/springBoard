@@ -2,10 +2,12 @@ package kr.or.ddit.memo.controller;
 
 import java.util.List;
 
+import org.aspectj.apache.bcel.classfile.Module.Require;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -83,7 +85,7 @@ public class MemoRetrieveController {
 	}
 	
 	
-	
+	// ............. 여기 컨트롤러로 오질 않음..........
 	//저장버튼 클릭시 insert
 	@PostMapping("form.do")
 	public String memoInsert(
@@ -98,12 +100,48 @@ public class MemoRetrieveController {
 			viewName = "redirect:/memo/memoList.do";
 		}else {
 			model.addAttribute("message", "서버오류");
-			viewName = "/memo/form.do";
+			viewName = "memo/memoDetail.do";
 		}
 		
 		return viewName;
 	}
 	
+	////////////////////////////////////////////////////
+	
+	//수정 select
+	@GetMapping("formEdit/{code}")
+	public String memoEditForm(
+		@RequestParam(value="code", required=true) String code	
+		,Model model	
+	) {
+		MemoVO memoDetail = memoService.retrieveMemo(code);
+		
+		model.addAttribute("memoDetail", memoDetail);
+		return "/memo/memoEdit";
+	}
+	
+	//수정 update
+	@PostMapping("formEdit/{code}")
+	public String memoEdit(
+		 @ModelAttribute("memo") MemoVO memoVO
+		 , @PathVariable String code
+		 ,Model model
+	) {
+		
+		log.info("수정post 접근 : ");
+		
+		
+		String viewName = null;
+		int rowcnt = memoService.modifyMemo(memoVO);
+		if(rowcnt > 0) {
+			viewName = "redirect:/memo/memoDetail.do/" + code;
+		}else {
+			model.addAttribute("message", "서버오류");
+			viewName = "/memo/form.do";
+		}
+		
+		return viewName;
+	}
 	
 	
 	

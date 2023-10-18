@@ -23,7 +23,14 @@
 	</select>
 	
 	
-	<!--  -->
+	<!-- 수정  -->
+	<update id="updateMemo" parameterType="kr.or.ddit.vo.MemoVO">
+	UPDATE TBL_MEMO
+	   SET WRITER = #{writer} 
+	       ,CONTENT = #{content}
+	WHERE CODE = #{code} 
+	</update>
+	
 
 
 

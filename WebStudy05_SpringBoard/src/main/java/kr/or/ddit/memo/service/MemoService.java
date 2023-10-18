@@ -19,5 +19,9 @@ public interface MemoService {
 	
 	//등록 insert
 	public int createMemo(MemoVO memoVO);
+	
+	//수정페이지 
+	public int modifyMemo(MemoVO memoVO);
+	
 
 }
