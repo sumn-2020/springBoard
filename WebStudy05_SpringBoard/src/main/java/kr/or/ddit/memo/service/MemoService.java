@@ -23,5 +23,8 @@ public interface MemoService {
 	//수정페이지 
 	public int modifyMemo(MemoVO memoVO);
 	
+	//삭제
+	public int deleteMemo(String code);
+	
 
 }

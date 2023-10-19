@@ -31,6 +31,12 @@
 	WHERE CODE = #{code} 
 	</update>
 	
+	<!-- 삭제  -->
+	<delete id="deleteMemo" parameterType="String">
+	delete from TBL_MEMO
+	where CODE = #{code} 
+	</delete>
+	
 
 
 

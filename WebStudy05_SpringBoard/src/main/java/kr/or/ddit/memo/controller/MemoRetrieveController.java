@@ -5,6 +5,7 @@ import java.util.List;
 import org.aspectj.apache.bcel.classfile.Module.Require;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -138,6 +139,29 @@ public class MemoRetrieveController {
 		
 		return viewName;
 	}
+	
+	/////////////////////////////////////////////////////////////////
+	
+	//삭제
+	@PostMapping("delForm/{code}")
+	public String memoDelete(
+			@PathVariable String code
+			,Model model
+	) {
+		
+		log.info("delete시작");
+		String viewName = null; 
+		int rowcnt = memoService.deleteMemo(code);
+		if(rowcnt > 0) {
+			viewName = "redirect:/memo/memoList.do";
+		}else {
+			model.addAttribute("message", "서버 오류");
+			viewName = "memo/memoList.do";
+		}
+		
+		return viewName;
+	}
+	 
 	
 	
 	

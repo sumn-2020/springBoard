@@ -65,6 +65,17 @@ public class MemoServiceImpl implements MemoService{
 	}
 
 
+	//삭제
+	@Override
+	public int deleteMemo(String code) {
+
+		int rowcnt = memoDAO.deleteMemo(code);
+		return rowcnt;
+	}
+
+	
+	
+
 	
 	
 	

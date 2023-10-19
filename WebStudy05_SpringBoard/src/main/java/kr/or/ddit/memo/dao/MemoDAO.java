@@ -54,4 +54,15 @@ public interface MemoDAO {
 	 */
 	public int updateMemo(MemoVO memoVO);
 	
+	
+	
+	/**
+	 * 삭제
+	 * @param code
+	 * @return
+	 */
+	public int deleteMemo(String code);
+	
+	
+	
 }
