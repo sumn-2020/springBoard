@@ -109,7 +109,7 @@ public class MemoRetrieveController {
 	////////////////////////////////////////////////////
 	
 	//수정 select
-	@GetMapping("formEdit/{code}")
+	@RequestMapping("/formEdit/{code}")
 	public String memoEditForm(
 		@RequestParam(value="code", required=true) String code	
 		,Model model	
@@ -121,20 +121,16 @@ public class MemoRetrieveController {
 	}
 	
 	//수정 update
-	@PostMapping("formEdit/{code}")
+	@PostMapping("/formEdit")
 	public String memoEdit(
 		 @ModelAttribute("memo") MemoVO memoVO
-		 , @PathVariable String code
 		 ,Model model
 	) {
-		
-		log.info("수정post 접근 : ");
-		
 		
 		String viewName = null;
 		int rowcnt = memoService.modifyMemo(memoVO);
 		if(rowcnt > 0) {
-			viewName = "redirect:/memo/memoDetail.do/" + code;
+			viewName = "redirect:/memo/memoDetail.do?code=" + memoVO.getCode();
 		}else {
 			model.addAttribute("message", "서버오류");
 			viewName = "/memo/form.do";
