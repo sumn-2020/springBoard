@@ -21,9 +21,25 @@
 	</ul>
 	<div class="btn-wrap right">
 		<a href="${pageContext.request.contextPath}/memo/memoList.do">취소</a>
-		<button type="submit">저장</button>
+		<button id="formSave" type="submit">저장</button>
 	</div>
 </form>
 
 
 <a href="${pageContext.request.contextPath}/memo/memoList.do">목록</a>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+	
+	let formSave = document.getElementById("formSave");
+	formSave.addEventListener('click', function(event){
+		if(confirm("저장하시겠습니까?") == true) {
+			alert("저장되었습니다");
+		}else {
+			return;
+		}
+		
+	});
+
+});
+</script>

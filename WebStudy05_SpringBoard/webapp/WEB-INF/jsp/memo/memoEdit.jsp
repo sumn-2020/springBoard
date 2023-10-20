@@ -19,9 +19,30 @@
 	</ul>
 	<div class="btn-wrap right">
 		<a href="${pageContext.request.contextPath}/memo/memoList.do">취소</a>
-		<button type="submit">저장</button>
+		<button id="memoEdit" type="submit">저장</button>
 	</div>
 </form> 
 
 
 <a href="${pageContext.request.contextPath}/memo/memoList.do">목록</a>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+	
+	
+	let memoEdit = document.getElementById("memoEdit");
+	memoEdit.addEventListener("click", function() {
+		if(confirm("수정하시겠습니까?") == true) {
+			alert("수정되었습니다");
+		}else {
+			return;
+		}
+	});
+	
+	
+	
+});
+
+
+</script>
