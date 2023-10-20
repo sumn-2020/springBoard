@@ -14,6 +14,9 @@ ${memoDetail.content}
 ${memoDetail.date1} 
 
 
+${rowcnt }
+
+
 
 <button type="button" onclick="f_moveedit()">수정</button>
 <form id="delForm" method="post" action="${pageContext.request.contextPath }/memo/delForm/${memoDetail.code}" >
@@ -33,8 +36,13 @@ function f_moveedit() {
 }
 
 function f_moveDelete() {
-	if(confirm("정말로 삭제하시겠습니까?")){
+	
+	Del = confirm("정말로 삭제하시겠습니까?");
+	if(Del == true){
 		document.getElementById('delForm').submit();
+		alert("삭제되었습니다");
+	}else {
+		alert("취소되었습니다");
 	}
 	
 	
