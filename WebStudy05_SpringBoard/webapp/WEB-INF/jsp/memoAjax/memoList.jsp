@@ -13,14 +13,30 @@ ${memoList.date1}
  --%>
 
 
-<div id="aa">신규</div>
+<div id="contentBody">신규</div>
 
 
 <script>
 $(document).ready(function() {
-	$("#aa").click(function() {
-		//alert("sdf");
+	let $contentBody = $("#contentBody");
+	
+
+	$.ajax({
+		url: "/memo/memoList",
+		method: "post",
+		data: $contentBody.serialize(), 
+		dataType: "json",
+		success: function(resp) {
+			console.log(resp);
+		},
+		error: function(jqXHR, status, error) {
+			console.log(jqXHR);
+			console.log(status);
+			console.log(error);
+		}
 	});
+
+	
 });
 
 </script>
