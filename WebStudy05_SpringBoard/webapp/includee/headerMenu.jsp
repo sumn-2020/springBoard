@@ -7,7 +7,10 @@
   </button>
   <ul class="nav px-3 col">
   	<li class="nav-item text-nowrap">
-      <a class="nav-link" href="${pageContext.request.contextPath }/memo/memoList.do">메모장</a>
+      <a class="nav-link" href="${pageContext.request.contextPath }/memo/memoList.do">메모장(model)</a>
+    </li>
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="${pageContext.request.contextPath }/memoAjax/memoList.do">메모장(ajax)</a>
     </li>
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="${pageContext.request.contextPath }/board/boardList.do">자유게시판</a>

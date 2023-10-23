@@ -82,7 +82,7 @@ public class MemoRetrieveController {
 	public String retrieveInsertPage(
 			Model model
 	) {
-		return "/memo/memoForm";
+		return "memo/memoForm";
 	}
 	
 	
@@ -118,7 +118,7 @@ public class MemoRetrieveController {
 		MemoVO memoDetail = memoService.retrieveMemo(code);
 		
 		model.addAttribute("memoDetail", memoDetail);
-		return "/memo/memoEdit";
+		return "memo/memoEdit";
 	}
 	
 	//수정 update

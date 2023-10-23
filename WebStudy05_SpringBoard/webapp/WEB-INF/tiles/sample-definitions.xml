@@ -8,9 +8,21 @@
   	<put-attribute name="footer" value="/includee/footer.jsp" />
   	<put-attribute name="postScript" value="/includee/postScript.jsp" />
   </definition>
-   <definition name="memo/*" extends="parent">
+  
+    <!-- memo_ajax -->
+  <definition name="memoAjax/*" extends="parent">
+  	<put-attribute name="content" value="/WEB-INF/jsp/memoAjax/{1}.jsp"/>
+  </definition>
+  
+  
+  <!-- memo-일반  -->
+  <definition name="memo/*" extends="parent">
   	<put-attribute name="content" value="/WEB-INF/jsp/memo/{1}.jsp"/>
   </definition>
+  
+
+
+  
   <definition name="board/*" extends="parent" preparer="boardViewPreparer">
   	<put-attribute name="content" value="/WEB-INF/jsp/board/{1}.jsp"/>
   </definition>
