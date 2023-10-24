@@ -4,9 +4,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ddit.memoAjax.service.MemoAjaxService;
 import kr.or.ddit.memoAjax.vo.MemoAjaxVO;
@@ -37,9 +41,24 @@ public class MemoAjaxController {
 		List<MemoAjaxVO> memoAjaxSelect = memoAjaxService.MemoAjaxSelect(memoAjaxVO);
 		log.info("memoAjaxSelect : " + memoAjaxSelect);
 		
-		
 		return "memoAjax/memoList";
 	}
+	
+	@ResponseBody
+	@GetMapping(value="/memoListResponse", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<MemoAjaxVO> memoListResponse(
+		MemoAjaxVO memoAjaxVO
+	) {
+		
+		log.info("ajax들어옴");
+		
+		List<MemoAjaxVO> memoAjaxSelect = memoAjaxService.MemoAjaxSelect(memoAjaxVO);
+		log.info("memoAjaxSelect : " + memoAjaxSelect);
+		
+		return memoAjaxSelect; //resp로 반환
+
+	}
+	
 	
 	
 	

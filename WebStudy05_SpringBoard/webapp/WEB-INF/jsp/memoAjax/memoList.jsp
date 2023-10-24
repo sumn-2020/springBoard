@@ -13,28 +13,50 @@ ${memoList.date1}
  --%>
 
 
-<div id="contentBody">신규</div>
+<div id="contentBody"></div>
 
 
 <script>
 $(document).ready(function() {
 	let $contentBody = $("#contentBody");
-	
+    
+    
+	function init(){
+		$.ajax({
+			url: "${pageContext.request.contextPath }/memoAjax/memoListResponse",
+			contentType:"application/json;charset:utf-8",
+			type: "get",
+			//data: JSON.stringify(data),
+			//dataType: "text",
+			success: function(resp) {
+				console.log(resp);
+				
+				
+				for (var i = 0; i < resp.length; i++) {
+					$contentBody.append(
+							$("<p>").html(resp[i].code + ',' + resp[i].content + "," + resp[i].writer + "," + resp[i].date1 )
+							//,$("<p>").html(resp[i].content)
+							//,$("<p>").html(resp[i].writer)
+							//,$("<p>").html(resp[i].date1)	
+					); 
+				}
+				
+				
+			},
+			error: function(jqXHR, status, error) {
+				console.log(jqXHR);
+				console.log(status);
+				console.log(error);
+			}
+		});
+	}
+		
+	init();
 
-	$.ajax({
-		url: "/memo/memoList",
-		method: "post",
-		data: $contentBody.serialize(), 
-		dataType: "json",
-		success: function(resp) {
-			console.log(resp);
-		},
-		error: function(jqXHR, status, error) {
-			console.log(jqXHR);
-			console.log(status);
-			console.log(error);
-		}
-	});
+	
+	
+	
+	
 
 	
 });
