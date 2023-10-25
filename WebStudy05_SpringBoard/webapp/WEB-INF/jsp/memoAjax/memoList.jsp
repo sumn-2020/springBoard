@@ -4,23 +4,30 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>      
 
 
-<!-- 리스트 하나일 경우   --> 
-<%-- ${memoList.code}
-${memoList.writer}
-${memoList.content}
-${memoList.date1} 
-
- --%>
 
 
+<!-- 목록 select  -->
 <div id="contentBody"></div>
+<button>신규</button>
+
+
+
+
+<!-- 수정  -->
+<div id="contentView">뷰페이지</div>
+
 
 
 <script>
 $(document).ready(function() {
+	
+
+	
 	let $contentBody = $("#contentBody");
+	let $contentView = $("#contentView");
+	
     
-    
+    //목록 select 
 	function init(){
 		$.ajax({
 			url: "${pageContext.request.contextPath }/memoAjax/memoListResponse",
@@ -29,17 +36,60 @@ $(document).ready(function() {
 			//data: JSON.stringify(data),
 			//dataType: "text",
 			success: function(resp) {
-				console.log(resp);
+				//console.log(resp);
 				
-				
+				// **********************
+				// list목록 페이지 띄우기 
+				// **********************
 				for (var i = 0; i < resp.length; i++) {
 					$contentBody.append(
-							$("<p>").html(resp[i].code + ',' + resp[i].content + "," + resp[i].writer + "," + resp[i].date1 )
-							//,$("<p>").html(resp[i].content)
-							//,$("<p>").html(resp[i].writer)
-							//,$("<p>").html(resp[i].date1)	
+							$("<span>").html(resp[i].code)
+							,$("<a>")
+							.attr("class","aLink")
+							//.attr("id","aLink"+[i])
+							.attr("href", "javascript:void(0);")
+							//.attr("href", '${pageContext.request.contextPath }/memoAjax/memoView/' + resp[i].code)
+							.html(resp[i].content)
+							,$("<p>").html(resp[i].writer)
+							,$("<p>").html(resp[i].date1)	
 					); 
 				}
+				
+				
+				// **********************
+				// aLink클릭시 뷰페이지 띄우기 - ............... for문때문에 계속 한꺼번에 나옴.... 수정필요
+				// **********************
+				$(".aLink").each(function(){
+						   $(this).click(function(e){
+							 e.preventDefault();
+							 for (var i = 0; i < resp.length; i++) {
+								 $.ajax({
+									url: '${pageContext.request.contextPath }/memoAjax/memoView/' + resp[i].code,
+									type: "get",
+									//data: JSON.stringify(data),
+									dataType: "json", //이걸 지정안해주면 resp넘어오는 데이터가 xml형식으로 넘어오게 됨 
+									success: function(data) {
+											console.log("data : " ,  data.code);
+											 $contentView.append(
+												$("<span>").html(data.code)
+											) 
+										
+										
+									},
+									error: function(jqXHR, status, error) {
+										console.log(jqXHR);
+										console.log(status);
+										console.log(error);
+									}
+								});  
+							 }
+						
+						});  
+					});
+				
+				
+
+				
 				
 				
 			},
@@ -49,14 +99,16 @@ $(document).ready(function() {
 				console.log(error);
 			}
 		});
+		
+		
+		
+		
 	}
 		
 	init();
 
-	
-	
-	
-	
+
+
 
 	
 });

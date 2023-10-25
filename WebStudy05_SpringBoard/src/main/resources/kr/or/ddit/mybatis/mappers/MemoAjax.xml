@@ -6,10 +6,22 @@
 <mapper namespace="kr.or.ddit.memoAjax.dao.MemoAjaxDao">
 
 
+	<!-- select   -->
 	<select id="memoAjaxSelect" parameterType="String" resultType="kr.or.ddit.memoAjax.vo.MemoAjaxVO">
 	select CODE, WRITER, CONTENT, DATE1 from TBL_MEMO
 	</select>
 
-
+	<!--  view -->
+	<select id="memoAjaxView" resultType="kr.or.ddit.memoAjax.vo.MemoAjaxVO" parameterType="String">
+	 select CODE, WRITER, CONTENT, DATE1
+	 from tbl_memo
+	 where code = #{code}
+	</select>
+	
+	<!-- create resultType은 필요없음 insert는 화면에 뿌려주는게 아니기 때문에 -->
+	<insert id="memoAjaxInsert" parameterType="kr.or.ddit.memoAjax.vo.MemoAjaxVO">
+	  insert into TBL_MEMO
+      values(memo_seq2.NEXTVAL, #{writer}, #{content} , SYSDATE)
+	</insert>
 
 </mapper>

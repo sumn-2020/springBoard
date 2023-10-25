@@ -12,9 +12,24 @@ import kr.or.ddit.memoAjax.vo.MemoAjaxVO;
 public interface MemoAjaxDao {
 
 	/**
-	 * 한개 리스트 추출
+	 * 리스트 추출
 	 * @return
 	 */
 	public List<MemoAjaxVO> memoAjaxSelect(MemoAjaxVO memoAjaxVO);
+	
+	/**
+	 * 뷰 페이지 
+	 * @param memoAjaxVO
+	 * @return
+	 */
+	public MemoAjaxVO memoAjaxView(String code);
+	
+	
+	/**
+	 * insert 신규
+	 * @param memoAjaxVO
+	 * @return
+	 */
+	public MemoAjaxVO memoAjaxCreate(MemoAjaxVO memoAjaxVO);
 	
 }
