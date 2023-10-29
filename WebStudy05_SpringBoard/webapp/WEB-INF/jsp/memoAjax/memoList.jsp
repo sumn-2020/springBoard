@@ -7,19 +7,19 @@
 
 
 <!-- 목록 select  -->
+
+
 <div id="contentBody"></div>
-<button>신규</button>
-
-
-
-
+<button>신규 insert</button>
+	
+	
 <!-- 수정  -->
-<div id="contentView">뷰페이지</div>
-
+<div id="contentView"></div>
 
 
 <script>
 $(document).ready(function() {
+
 	
 
 	
@@ -42,7 +42,7 @@ $(document).ready(function() {
 				// list목록 페이지 띄우기 
 				// **********************
 				for (var i = 0; i < resp.length; i++) {
-					$contentBody.append(
+					/* $contentBody.append(
 							$("<span>").html(resp[i].code)
 							,$("<a>")
 							.attr("class","aLink")
@@ -52,46 +52,22 @@ $(document).ready(function() {
 							.html(resp[i].content)
 							,$("<p>").html(resp[i].writer)
 							,$("<p>").html(resp[i].date1)	
+					);  */
+					
+					
+					$contentBody.append(
+							$("<a>")
+							.attr("class","aLink")
+							.attr("href", "javascript:void(0);")
+							.append(
+								$("<span>").html(resp[i].code)	
+								,$("<span>").html(resp[i].content)
+								,$("<p>").html(resp[i].writer)
+								,$("<p>").html(resp[i].date1)	
+							)
 					); 
-				}
-				
-				
-				// **********************
-				// aLink클릭시 뷰페이지 띄우기 - ............... for문때문에 계속 한꺼번에 나옴.... 수정필요
-				// **********************
-				$(".aLink").each(function(){
-						   $(this).click(function(e){
-							 e.preventDefault();
-							 for (var i = 0; i < resp.length; i++) {
-								 $.ajax({
-									url: '${pageContext.request.contextPath }/memoAjax/memoView/' + resp[i].code,
-									type: "get",
-									//data: JSON.stringify(data),
-									dataType: "json", //이걸 지정안해주면 resp넘어오는 데이터가 xml형식으로 넘어오게 됨 
-									success: function(data) {
-											console.log("data : " ,  data.code);
-											 $contentView.append(
-												$("<span>").html(data.code)
-											) 
-										
-										
-									},
-									error: function(jqXHR, status, error) {
-										console.log(jqXHR);
-										console.log(status);
-										console.log(error);
-									}
-								});  
-							 }
-						
-						});  
-					});
-				
-				
-
-				
-				
-				
+					
+				}	
 			},
 			error: function(jqXHR, status, error) {
 				console.log(jqXHR);
@@ -99,15 +75,58 @@ $(document).ready(function() {
 				console.log(error);
 			}
 		});
-		
-		
-		
-		
+	
 	}
 		
 	init();
 
+	
+	// **********************
+	// aLink클릭시 뷰페이지 띄우기 
+	// **********************
+	$("#contentBody").on("click", ".aLink", function(){
+		 $(this).each(function(index) {
+		
+			 
+			console.log(this.children[0].innerText);
+			let code = this.children[0].innerText;
 
+			
+			 $.ajax({
+					url: '${pageContext.request.contextPath }/memoAjax/memoView/' + code,
+					type: "get",
+					//data: JSON.stringify(data),
+					dataType: "json", //이걸 지정안해주면 resp넘어오는 데이터가 xml형식으로 넘어오게 됨 
+					success: function(data) {
+						
+						$contentView.empty();
+						console.log("data : " ,  data.code);
+						
+						
+						$contentView.append(
+								$("<span>").html(data.code)	
+								,$("<span>").html(data.content)
+								,$("<p>").html(data.writer)
+								,$("<p>").html(data.date1)	
+							
+						) 
+						
+						
+					},
+					error: function(jqXHR, status, error) {
+						console.log(jqXHR);
+						console.log(status);
+						console.log(error);
+					}
+				});  
+		 });
+	 }); 
+	
+	
+
+	
+
+	
 
 
 	
