@@ -14,6 +14,8 @@ public interface MemoAjaxService  {
 	 */
 	public List<MemoAjaxVO>  MemoAjaxSelect(MemoAjaxVO memoAjaxVO);
 	
+
+	
 	
 	/**
 	 * 뷰페이지 view select
@@ -29,6 +31,6 @@ public interface MemoAjaxService  {
 	 * @param memoAjaxVO
 	 * @return
 	 */
-	public MemoAjaxVO memoAjaxCreate(MemoAjaxVO memoAjaxVO);
+	public int memoAjaxCreate(MemoAjaxVO memoAjaxVO);
 	
 }

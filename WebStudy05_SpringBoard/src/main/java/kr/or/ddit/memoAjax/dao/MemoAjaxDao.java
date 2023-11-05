@@ -17,6 +17,7 @@ public interface MemoAjaxDao {
 	 */
 	public List<MemoAjaxVO> memoAjaxSelect(MemoAjaxVO memoAjaxVO);
 	
+
 	/**
 	 * 뷰 페이지 
 	 * @param memoAjaxVO
@@ -30,6 +31,6 @@ public interface MemoAjaxDao {
 	 * @param memoAjaxVO
 	 * @return
 	 */
-	public MemoAjaxVO memoAjaxCreate(MemoAjaxVO memoAjaxVO);
+	public int memoAjaxInsert(MemoAjaxVO memoAjaxVO);
 	
 }

@@ -58,7 +58,7 @@ public class MemoAjaxController {
 		MemoAjaxVO memoAjaxVO
 	) {
 		
-		log.info("ajax들어옴");
+		//log.info("ajax들어옴");
 		
 		List<MemoAjaxVO> memoAjaxSelect = memoAjaxService.MemoAjaxSelect(memoAjaxVO);
 		log.info("memoAjaxSelect : " + memoAjaxSelect);
@@ -92,10 +92,25 @@ public class MemoAjaxController {
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////
+
 	
 	
-	
-	
+	/**
+	 * 등록 신규 insert
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("MemoAjaxInsert")
+	public int memoAjaxInsert(
+			@RequestBody MemoAjaxVO memoAjaxVO
+	) {
+		
+		log.info("들어옴 :::");
+		
+		int result = this.memoAjaxService.memoAjaxCreate(memoAjaxVO);
+		return result;
+		
+	}
 	
 	
 	

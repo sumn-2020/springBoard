@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8" buffer="8kb"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>      
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>    
+	
 <!doctype html>
 <html>
 	<head>
@@ -11,6 +14,9 @@
 		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 		<meta name="generator" content="Hugo 0.88.1">
 		<meta name="theme-color" content="#7952b3">
+		
+		<meta name="_csrf_header" th:content="${_csrf.headerName}">
+		<meta name="_csrf" th:content="${_csrf.token}">
 
 		<title>Dashboard Template · Bootstrap v5.2</title>
 		
@@ -67,6 +73,17 @@
 		
 		<tiles:insertAttribute name="postScript" />
 	</body>
+	<script>
+	$(function () {
+	    var token = $("meta[name='_csrf']").attr('content');
+	    var header = $("meta[name='_csrf_header']").attr('content');
+	    if(token && header) {
+	        $(document).ajaxSend(function(event, xhr, options) {
+	            xhr.setRequestHeader(header, token);
+	        });
+	    }
+	});
+	</script>
 </html>
 
 

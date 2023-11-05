@@ -1,20 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>      
-
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>    
+ <style>
+ #insertDisplay { display: none; }
+ 
+ </style>
 
 
 
 <!-- 목록 select  -->
-
-
 <div id="contentBody"></div>
-<button>신규 insert</button>
+<button type="button" id="f_insert">신규 insert</button>
+
+
+<!--  신규 form  -->
+<div id="insertDisplay">
+	<!-- code: <input type="text" placeholder="code" id="code" /> -->
+	content: <input type="text" placeholder="content" id="content" />
+	writer: <input type="text" placeholder="writer" id="writer" />
+	date1: <input type="text" placeholder="date1" id="date1" />
+	<button type="button" id="insertSubmitBtn">등록</button>
+</div>
+<!--  // 신규 form  -->
+
 	
 	
-<!-- 수정  -->
-<div id="contentView"></div>
+<!-- 뷰페이지  -->
+<div id="contentView">
+</div>
+<!-- 뷰페이지  -->
+
+
+<button>삭제</button>
+<button>수정</button>
+
+
+
+
 
 
 <script>
@@ -81,6 +104,8 @@ $(document).ready(function() {
 	init();
 
 	
+	////////////////////////////////////////////////////////////////////////////////
+	
 	// **********************
 	// aLink클릭시 뷰페이지 띄우기 
 	// **********************
@@ -122,8 +147,61 @@ $(document).ready(function() {
 		 });
 	 }); 
 	
+
+	
+	///////////////////////////////////////////////////////////////////////////
 	
 
+	// **********************
+	// 신규 insert 버튼 클릭시  
+	// **********************
+	$("#f_insert").click(function(){
+		$("#insertDisplay").css('display','block');
+/* 
+		$.ajax({
+			url:"${pageContext.request.contextPath}/memoAjax/memoList",
+			type:"post",
+			success:function(result){
+				console.log("result:::::UI :: " + result);
+			}
+		});	 */
+	
+	});
+
+	// **********************
+	// 신규 등록버튼 클릭시
+	// **********************
+	//현재 날짜 세팅하기 
+	let data1 = $("#date1").attr('value', new Date().toISOString().substring(0, 10));// 오늘 날짜input에 value에 값 넣기 
+	
+	$("#insertSubmitBtn").on("click",function(){
+		
+		//let code = $("#code").val();
+		let content = $("#content").val();
+		let writer = $("#writer").val();
+
+		let sendData = {
+			//"code" : code
+			 "content" : content
+			, "writer" : writer
+			//, "date1" : date1
+		};
+		//console.log("sendData : " + JSON.stringify(sendData));
+
+
+		$.ajax({
+			url:"${pageContext.request.contextPath}/memoAjax/MemoAjaxInsert",
+			contentType:"application/json;charset:utf-8",
+			data:JSON.stringify(sendData),//마샬링
+			type:"post",
+			success:function(result){
+				//console.log("result : " + result);
+			}
+		});	
+		
+		
+	});
+	
 	
 
 	

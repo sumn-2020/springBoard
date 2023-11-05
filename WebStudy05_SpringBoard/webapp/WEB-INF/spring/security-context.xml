@@ -36,7 +36,7 @@
 		<intercept-url pattern="/board/**" access="isAuthenticated()"/>
 		<intercept-url pattern="/mypage" access="isAuthenticated()"/>
 		
-		<csrf disabled="false"/>
+		<csrf disabled="true"/>
 	</http>
 </b:beans>
 

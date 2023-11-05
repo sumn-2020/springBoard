@@ -26,6 +26,7 @@ public class MemoAjaxServiceImpl implements MemoAjaxService {
 		return memoAjaxSelect;
 	}
 
+	
 
 	/**
 	 * 뷰 select
@@ -41,11 +42,15 @@ public class MemoAjaxServiceImpl implements MemoAjaxService {
 	 * 신규 insert
 	 */
 	@Override
-	public MemoAjaxVO memoAjaxCreate(MemoAjaxVO memoAjaxVO) {
-		MemoAjaxVO memoAjaxCreate = memoAjaxDao.memoAjaxCreate(memoAjaxVO);
+	public int memoAjaxCreate(MemoAjaxVO memoAjaxVO) {
+		int memoAjaxCreate = memoAjaxDao.memoAjaxInsert(memoAjaxVO);
 		return memoAjaxCreate;
 	}
-	
+
+
+
+
+
 	
 	
 	
