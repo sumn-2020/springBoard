@@ -32,7 +32,7 @@
 <!-- 뷰페이지  -->
 
 
-<button>삭제</button>
+<button onclick="f_delete()">삭제</button>
 <button>수정</button>
 
 
@@ -198,16 +198,40 @@ $(document).ready(function() {
 				//console.log("result : " + result);
 			}
 		});	
-		
-		
+
 	});
 	
 	
-
-	
-
-
-	
 });
+
+
+// **********************
+// 삭제 버튼 클릭시
+// **********************
+function f_delete(){
+	
+	let code = $("#contentView").children(0).html();
+	console.log("codefgdfg::::" + code);
+	
+	
+	
+	
+ 	$.ajax({
+		url:"${pageContext.request.contextPath}/memoAjax/memoAjaxDelete/" + code,
+		type:"post",
+		//data:JSON.stringify(data),//마샬링
+		dataType : "json",
+		success:function(result){
+			console.log("delete결과물왔다!!" + result);
+			alert("삭제완료");
+			//location.reload(); 새로고침 안하면 삭제 해도 그대로 남아있기 때문에 새로고침 한번 해줘야됨  
+			location.href = "${pageContext.request.contextPath}/memoAjax/memoList";
+		}
+	});	  
+	
+	
+}
+
+
 
 </script>

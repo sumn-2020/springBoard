@@ -49,6 +49,17 @@ public class MemoAjaxServiceImpl implements MemoAjaxService {
 
 
 
+	/**
+	 * 삭제
+	 */
+	@Override
+	public int memoAjaxDelete(String code) {
+		int cnt = memoAjaxDao.memoAjaxDelete(code);
+		return cnt;
+	}
+
+
+
 
 
 	

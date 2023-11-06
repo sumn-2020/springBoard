@@ -113,6 +113,33 @@ public class MemoAjaxController {
 	}
 	
 	
+	////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * 삭제
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("memoAjaxDelete/{code}")
+	public int memoAjaxDelete(
+		@PathVariable String code
+	) {
+		
+		//log.info("delet 시작::: ");
+		int result = memoAjaxService.memoAjaxDelete(code);
+		log.info("resultresultresult :: " + result);
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

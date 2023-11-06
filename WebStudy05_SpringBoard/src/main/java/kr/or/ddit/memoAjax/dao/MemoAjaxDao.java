@@ -33,4 +33,13 @@ public interface MemoAjaxDao {
 	 */
 	public int memoAjaxInsert(MemoAjaxVO memoAjaxVO);
 	
+	
+	
+	/**
+	 * 삭제
+	 * @param code
+	 * @return
+	 */
+	public int memoAjaxDelete(String code);
+	
 }

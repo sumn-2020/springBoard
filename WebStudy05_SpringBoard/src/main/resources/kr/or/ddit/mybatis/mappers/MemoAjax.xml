@@ -26,5 +26,18 @@
 	  insert into TBL_MEMO
       values(memo_seq2.NEXTVAL, #{writer}, #{content} , SYSDATE)
 	</insert>
+	
+	
+	
+	<!-- delete  resultType은 필요없음 delete는 화면에 뿌려주는게 아니기 때문에 -->
+	<delete id="memoAjaxDelete" parameterType="String">
+	delete from TBL_MEMO
+	where CODE = #{code}
+	</delete>
+	
+	
+	
+	
+	
 
 </mapper>
