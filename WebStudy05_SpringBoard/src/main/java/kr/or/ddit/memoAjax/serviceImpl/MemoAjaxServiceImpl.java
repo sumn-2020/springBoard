@@ -60,6 +60,18 @@ public class MemoAjaxServiceImpl implements MemoAjaxService {
 
 
 
+	
+	/**
+	 * 수정
+	 */
+	@Override
+	public int memoAjaxUpdate(MemoAjaxVO memoAjaxVO) {
+		int cnt = memoAjaxDao.memoAjaxUpdate(memoAjaxVO);
+		return cnt;
+	}
+
+
+
 
 
 	

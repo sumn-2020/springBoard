@@ -42,4 +42,13 @@ public interface MemoAjaxDao {
 	 */
 	public int memoAjaxDelete(String code);
 	
+	
+	
+	/**
+	 * 수정 
+	 * @param code
+	 * @return
+	 */
+	public int memoAjaxUpdate(MemoAjaxVO memoAjaxVO);
+	
 }

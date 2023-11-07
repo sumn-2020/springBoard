@@ -132,6 +132,39 @@ public class MemoAjaxController {
 	}
 	
 	
+	////////////////////////////////////////////////////////////////////////
+	
+	
+	/**
+	 * 수정UI
+	 * @param code
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("memoAjaxUpdateUI/{code}")
+	public MemoAjaxVO memoAjaxUpdateUI(
+		@PathVariable String code
+	) {
+		 MemoAjaxVO memoAjaxVO = memoAjaxService.memoAjaxView(code);
+		 return memoAjaxVO;
+	}
+	
+	
+	/**
+	 * 수정
+	 * @param code
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("memoAjaxUpdate/{code}")
+	public int memoAjaxUpdate(
+		@PathVariable String code
+		, @RequestBody MemoAjaxVO memoAjaxVO
+	) {
+		log.info("memoAjaxVO:!!!!!!!!!" + memoAjaxVO);
+		int result = memoAjaxService.memoAjaxUpdate(memoAjaxVO);
+		return result;
+	}
 	
 	
 	

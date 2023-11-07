@@ -32,8 +32,6 @@
 <!-- 뷰페이지  -->
 
 
-<button onclick="f_delete()">삭제</button>
-<button>수정</button>
 
 
 
@@ -129,14 +127,14 @@ $(document).ready(function() {
 						
 						
 						$contentView.append(
-								$("<span>").html(data.code)	
-								,$("<span>").html(data.content)
-								,$("<p>").html(data.writer)
+								$("<span>").addClass("code").html(data.code)	
+								,$("<span>").addClass("content").html(data.content)
+								,$("<p>").addClass("writer").html(data.writer)
 								,$("<p>").html(data.date1)	
-							
+								,$("<button>").attr('onclick','f_delete()').text('삭제')
+								,$("<button>").attr('onclick','f_edit()').text('수정')
+								,$("<button>").attr("id", "completeBtn").text('수정완료')
 						) 
-						
-						
 					},
 					error: function(jqXHR, status, error) {
 						console.log(jqXHR);
@@ -196,6 +194,9 @@ $(document).ready(function() {
 			type:"post",
 			success:function(result){
 				//console.log("result : " + result);
+				alert("등록완료");
+				location.href = "${pageContext.request.contextPath}/memoAjax/memoList";
+				
 			}
 		});	
 
@@ -205,16 +206,75 @@ $(document).ready(function() {
 });
 
 
+//**********************
+//수정 버튼 클릭시
+//**********************
+function f_edit() {
+
+	let code = $("#contentView").children(0).html(); 
+	let date1 = $("#contentView").children(3).html(); 
+	
+	let content = $("#contentView").children(".content").html("<input type='text' value=''>");
+	let writer = $("#contentView").children(".writer").html("<input type='text' value=''>");
+	
+	//input안에 value불러올 컨트롤러 타기 
+	$.ajax({
+		url:"${pageContext.request.contextPath}/memoAjax/memoAjaxUpdateUI/" + code,
+		type:"post",
+		dataType : "json",
+		success:function(result){	
+			//console.log("updateREsult!!"+ JSON.stringify(result));	
+			//console.log("resultStringify.content!!"+ JSON.stringify(result.content));	
+			let contentJson = result.content;
+			let writerJson = result.writer;
+			let contentVal = $(".content").children().val(contentJson);	
+			let writerVal = $(".writer").children().val(writerJson);	
+		}
+	});	
+	
+
+	
+
+	//수정완료 버튼 클릭시 수정쿼리 타기 
+	$("#completeBtn").on("click", function() {
+		
+		let contentVal = $(".content").children().val();
+		let writerVal = $(".writer").children().val();
+		let data = {
+				"contentVal" : contentVal,
+				"writerVal" : writerVal,
+				"code" : code
+		}
+
+		$.ajax({
+			url:"${pageContext.request.contextPath}/memoAjax/memoAjaxUpdate/" + code,
+			contentType:"application/json;charset=utf-8",
+			type:"post",
+			data:JSON.stringify(data),
+			dataType : "json",
+			success:function(result){	
+				
+				console.log("resultresultresult !!" + result);
+			}
+		});	  
+		
+	});
+	
+	
+}
+
+
+
+
+
 // **********************
 // 삭제 버튼 클릭시
 // **********************
 function f_delete(){
 	
+	
+	
 	let code = $("#contentView").children(0).html();
-	console.log("codefgdfg::::" + code);
-	
-	
-	
 	
  	$.ajax({
 		url:"${pageContext.request.contextPath}/memoAjax/memoAjaxDelete/" + code,
@@ -231,6 +291,10 @@ function f_delete(){
 	
 	
 }
+
+
+
+
 
 
 

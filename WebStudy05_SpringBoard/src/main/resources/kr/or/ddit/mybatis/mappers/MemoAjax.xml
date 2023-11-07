@@ -37,6 +37,14 @@
 	
 	
 	
+	<update id="memoAjaxUpdate"  parameterType="kr.or.ddit.memoAjax.vo.MemoAjaxVO">
+		update TBL_MEMO
+		set WRITER = #{writer}
+		    ,CONTENT = #{content} 
+		WHERE CODE = #{code}
+	</update>
+	
+	
 	
 	
 
