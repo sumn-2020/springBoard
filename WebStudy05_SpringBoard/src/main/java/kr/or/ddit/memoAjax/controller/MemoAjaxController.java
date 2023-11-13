@@ -33,7 +33,7 @@ public class MemoAjaxController {
 	
 	/**
 	 * select(ajax)
-	 * @return
+	 * @return  memoAjax/memoList
 	 */
 	@GetMapping("memoList")
 	public String selectMemo(
@@ -157,13 +157,28 @@ public class MemoAjaxController {
 	 */
 	@ResponseBody
 	@PostMapping("memoAjaxUpdate/{code}")
-	public int memoAjaxUpdate(
+	public String memoAjaxUpdate(
 		@PathVariable String code
-		, @RequestBody MemoAjaxVO memoAjaxVO
+		,@RequestBody MemoAjaxVO memoAjaxVO //url상에서 데이터를 전달하는 경우(form 태그 등) @RequestParam 을 이용하고,그 외의 경우 @RequestBody 를 이용하자!
+		, Model model
 	) {
 		log.info("memoAjaxVO:!!!!!!!!!" + memoAjaxVO);
 		int result = memoAjaxService.memoAjaxUpdate(memoAjaxVO);
-		return result;
+		return result + "";
+		
+		/*String viewName = null;
+		int rowcnt = memoAjaxService.memoAjaxUpdate(memoAjaxVO);
+		if(rowcnt > 0) {
+			viewName = "redirect:/memoAjax/memoList" + code;
+		}else {
+			model.addAttribute("message", "서버 오류");
+			viewName = "memoAjax/memoList";
+		}
+		
+		return viewName;*/
+		
+		
+		
 	}
 	
 	
