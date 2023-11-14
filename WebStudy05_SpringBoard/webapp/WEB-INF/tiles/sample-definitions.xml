@@ -9,6 +9,13 @@
   	<put-attribute name="postScript" value="/includee/postScript.jsp" />
   </definition>
   
+  
+   <!-- 시험 -->
+  <definition name="test/*" extends="parent">
+  	<put-attribute name="content" value="/WEB-INF/jsp/test/{1}.jsp"/>
+  </definition>
+  
+  
     <!-- memo_ajax -->
   <definition name="memoAjax/*" extends="parent">
   	<put-attribute name="content" value="/WEB-INF/jsp/memoAjax/{1}.jsp"/>

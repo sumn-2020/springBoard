@@ -13,6 +13,9 @@
       <a class="nav-link" href="${pageContext.request.contextPath }/memoAjax/memoList.do">메모장(ajax)</a>
     </li>
     <li class="nav-item text-nowrap">
+      <a class="nav-link" href="${pageContext.request.contextPath }/test/test.do">시험</a>
+    </li>
+    <li class="nav-item text-nowrap">
       <a class="nav-link" href="${pageContext.request.contextPath }/board/boardList.do">자유게시판</a>
     </li>
     <li class="nav-item text-nowrap">
