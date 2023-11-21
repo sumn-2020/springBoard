@@ -4,4 +4,35 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>    
 
 
-시험 시작 
+<style>
+
+	
+</style>
+
+<%-- ${testVOList } --%>
+${testPasg.testpasgId}
+
+
+<ul>
+	<c:forEach items="${testVOList }" var="test">
+	
+	<li>
+		<span>${test.testNum }번</span><strong>정답 : ${test.testAns }</strong>
+		<p>${test.testQuest }</p>
+		<ol>
+			<li><strong>1</strong>1번지문</li>
+			<li><strong>2</strong>2번지문</li>
+			<li><strong>3</strong>3번지문</li>
+			<li><strong>4</strong>4번지문</li>
+		</ol>
+	</li>
+	</c:forEach>
+</ul>
+
+
+<script>
+
+
+
+
+</script>
