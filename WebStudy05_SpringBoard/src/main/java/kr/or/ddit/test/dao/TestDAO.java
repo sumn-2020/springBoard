@@ -16,7 +16,7 @@ public interface TestDAO {
 	 * 시험문제 리스트
 	 * @return
 	 */
-	public List<Map<String, Object>> testQList();
+	public List<TestVO> testQList();
 	
 	
 	/**
@@ -24,7 +24,7 @@ public interface TestDAO {
 	 * @param testQId
 	 * @return
 	 */
-	public List<Map<String, Object>> testPasgList(String testQId);
+	public List<TestVO> testPasgList(TestVO testVO);
 	
 	
 	

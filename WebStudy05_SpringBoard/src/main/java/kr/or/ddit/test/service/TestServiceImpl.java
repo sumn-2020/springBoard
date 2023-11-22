@@ -23,8 +23,8 @@ public class TestServiceImpl implements TestService {
 	 * 시험문제 리스트 
 	 */
 	@Override
-	public List<Map<String, Object>> testQList() {
-		List<Map<String, Object>> testVoList = dao.testQList();
+	public List<TestVO> testQList() {
+		List<TestVO> testVoList = dao.testQList();
 		log.info("testVOservice :::: " + testVoList);
 		
 		return testVoList;
@@ -34,10 +34,8 @@ public class TestServiceImpl implements TestService {
 	 * 시험지문 
 	 */
 	@Override
-	public List<Map<String, Object>> testPasgList(String testQId) {
-		List<Map<String, Object>> testPasg = dao.testPasgList(testQId);
-		log.info("testPasgservice :::: " + testPasg);
-		
+	public List<TestVO> testPasgList(TestVO testVO) {
+		List<TestVO> testPasg = dao.testPasgList(testVO);
 		return testPasg;
 	}
 	

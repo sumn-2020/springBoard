@@ -31,10 +31,9 @@
 	</select> -->
 	
 	
-	<select id="testPasgList" parameterType="String" resultType="HashMap" resultMap="testMap">
+	<select id="testPasgList" resultType="kr.or.ddit.vo.TestVO" resultMap="testMap">
 	select * from TESTQ a, TESTPASG b
 	where a.TESTQ_ID = b.TESTPASG_ID
-	and TESTQ_ID = #{testQId}
 	</select> 
 
 
