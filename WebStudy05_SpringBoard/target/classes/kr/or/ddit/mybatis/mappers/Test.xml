@@ -17,19 +17,6 @@
 		<collection property="pasgList" ofType="kr.or.ddit.vo.TestPasgVO" autoMapping="true" /><!-- 1:M관계의 테이블 조인 시 사용   M의 클래스를 선언할 땐 List<클래스>로 선언해야함-->
 	</resultMap>
 
-
-	<!-- 시험문제  -->
-	<select id="testQList" resultType="kr.or.ddit.vo.TestVO">
-	select TESTQ_ID, TEST_NUM, TEST_QUEST, TEST_ANS from testQ
-	</select>
-	
-	
-	
-	<!-- 시험지문  -->
-	<!-- <select id="testPasgList" resultType="kr.or.ddit.vo.TestVO" resultMap="testMap">
-	select * from TESTPASG 
-	</select> -->
-	
 	
 	<select id="testPasgList" resultType="kr.or.ddit.vo.TestVO" resultMap="testMap">
 	select * from TESTQ a, TESTPASG b

@@ -38,29 +38,12 @@ public class TestController {
 		
 
 		try {
-			//시험문제
-			List<TestVO> testVOList = service.testQList();
 			
-			
-			//시험지문
-			//하..... 지문 출력하고있는데 각 문제 당 각각의 지문들을 출력하기 위해서 
-			// 각 문제 ID값을 set해서 넣고 그 값을 파라미터값으로 가져와서 각 문제마다 각각의 지문들 출력하려고 시도 ..
-			//근데 계속 캐스팅 잘못됐다고 뜸... 쉣!!!!!!!!!!!!
-			
-			//위에거는 해결했는데........ 아니 왜 갑자기 java.lang.NumberFormatException 이거뜨는거냐고... 
-			
-			/*TestVO selectedQues = null; //시험문제 
-			List<TestVO> testPasg = null; //시험지문 
-			for (TestVO testQList : testVOList) {
-				selectedQues = testQList; //시험문제에서 testQId 빼내서 
-			}
-			String testQId = selectedQues.getTestQId();
-			log.info("testQId:::" + testQId);*/
-			
+			//시험문제 + 시험지문 조인 
 			List<TestVO> testPasg = service.testPasgList(testVO);
 			log.info("testPasg:::" + testPasg);
 			
-			model.addAttribute("testVOList", testVOList);
+
 			model.addAttribute("testPasg", testPasg);
 			
 			

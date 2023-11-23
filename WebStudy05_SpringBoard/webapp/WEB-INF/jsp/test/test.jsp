@@ -9,22 +9,19 @@
 	
 </style>
 
-<%-- ${testVOList } --%>
-${testPasg.testpasgId}
-
 
 <ul>
-	<c:forEach items="${testVOList }" var="test">
-	
+	<c:forEach items="${testPasg }" var="ques">
 	<li>
-		<span>${test.testNum }번</span><strong>정답 : ${test.testAns }</strong>
-		<p>${test.testQuest }</p>
+		<span>${ques.testNum }번</span><strong>정답 : ${ques.testAns }</strong>
+		<p>${ques.testQuest }</p>
+		
 		<ol>
-			<li><strong>1</strong>1번지문</li>
-			<li><strong>2</strong>2번지문</li>
-			<li><strong>3</strong>3번지문</li>
-			<li><strong>4</strong>4번지문</li>
+			<c:forEach items="${ques.pasgList }" var="pasg">
+				<li><strong>1</strong>${pasg.testPasg}</li>
+			</c:forEach> 
 		</ol>
+		
 	</li>
 	</c:forEach>
 </ul>

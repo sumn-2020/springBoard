@@ -18,17 +18,7 @@ public class TestServiceImpl implements TestService {
 	@Inject
 	private TestDAO dao;
 
-	
-	/**
-	 * 시험문제 리스트 
-	 */
-	@Override
-	public List<TestVO> testQList() {
-		List<TestVO> testVoList = dao.testQList();
-		log.info("testVOservice :::: " + testVoList);
-		
-		return testVoList;
-	}
+
 
 	/**
 	 * 시험지문 

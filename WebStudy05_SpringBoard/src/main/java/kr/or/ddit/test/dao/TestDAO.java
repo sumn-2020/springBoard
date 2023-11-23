@@ -11,13 +11,7 @@ import kr.or.ddit.vo.TestVO;
 public interface TestDAO {
 
 	
-	
-	/**
-	 * 시험문제 리스트
-	 * @return
-	 */
-	public List<TestVO> testQList();
-	
+
 	
 	/**
 	 * 시험지문 
