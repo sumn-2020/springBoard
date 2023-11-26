@@ -16,6 +16,9 @@
       <a class="nav-link" href="${pageContext.request.contextPath }/test/test.do">시험</a>
     </li>
     <li class="nav-item text-nowrap">
+      <a class="nav-link" href="${pageContext.request.contextPath }/testProf/testForm.do">시험(교수)</a>
+    </li>
+    <li class="nav-item text-nowrap">
       <a class="nav-link" href="${pageContext.request.contextPath }/board/boardList.do">자유게시판</a>
     </li>
     <li class="nav-item text-nowrap">

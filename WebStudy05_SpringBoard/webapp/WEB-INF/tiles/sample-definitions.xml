@@ -16,6 +16,12 @@
   </definition>
   
   
+   <!-- 시험 - prof -->
+  <definition name="testProf/*" extends="parent">
+  	<put-attribute name="content" value="/WEB-INF/jsp/testProf/{1}.jsp"/>
+  </definition>
+  
+  
     <!-- memo_ajax -->
   <definition name="memoAjax/*" extends="parent">
   	<put-attribute name="content" value="/WEB-INF/jsp/memoAjax/{1}.jsp"/>
