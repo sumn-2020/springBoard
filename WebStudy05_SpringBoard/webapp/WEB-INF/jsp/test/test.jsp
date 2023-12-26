@@ -14,57 +14,79 @@
 	<li>
 		<span>${ques.testNum }번</span><strong>정답 : ${ques.testAns }</strong>
 		<p>${ques.testQuest }</p>
-		
-		<ol>
-			<c:forEach items="${ques.pasgList }" var="pasg" varStatus="status">
-				<li class="items">
-					<%-- <label for="checkNum">
-						<strong><c:out value="${status.index+1 }"></c:out></strong>
-						<input type="checkbox" />
-						${pasg.testPasg}
-					</label> --%>
-				</li>
-			</c:forEach> 
-		</ol>
-		 
+		<ol class="mun"></ol>
 	</li>
 	</c:forEach>
 </ul>
 
 <script>
 
-//debugger;
-function fn_htmlStr() {
-	let htmlStr = "";
-	htmlStr += `
-		 <label for="checkNum">
-			<strong><c:out value="${status.index+1 }"></c:out></strong>
-			<input type="checkbox" />
-			${pasg.testPasg}
-		</label>
-	`; 
 
-	const items = document.querySelector(".items");
-	items.innerHTML = htmlStr;
-}
-
-
-
-//문제속 지문 만들기 => 캡쳐해놓은 거 보고 ... 한번 해보기 
-//지문에 1,2,3,4, id에 숫자 붙여서 id값 다 다르게 하여 checkbox 클릭 잘되게 
-//submit 기능 추가하기 
-
-function pasgList() {
+//시험지문 
+function fn_htmlStr(data) {
 	
-	let pasgList = [];
-	let pasgIndex = 0;
-	for (var i = 0; i < array.length; i++) {
+	console.log("ajaxDataajaxDataajaxDataajaxData :::: " , data);
+	
 		
+	let liTags = "";
+	const mun = $(".mun");
+	
+	for (var i = 0; i < data.length; i++) {
+			//console.log("ajaxData" + [i] + " :::: " , data.pasgList[i]);
+
+			/*  liTags = `
+				<li class="items">
+					 <label for="checkNum${data[i].pasgList[i]}">
+						<strong><c:out value="${data[i].pasgList[i] }"></c:out></strong>
+						<input type="checkbox" id="checkNum${data[i].pasgList[i]}" />
+						${pasg.testPasg}
+					</label>
+				</li> `  */
+				 liTags = $("<li>").append(
+						  $("<label>").attr("for", "checkNum")
+						  ,$("<input>").prop("type", "checkbox").attr("id",i)
+						  ,$("<p>").html(data[i].pasgList[i].testPasg)
+						 
+				);		 	 
+				 mun.append(liTags);
 	}
 	
-	
-	
+
+
+
+
 }
+
+
+
+
+function init() {
+	//시험지문 
+	$.ajax({
+		url: "${pageContext.request.contextPath }/test/ajaxPasg" ,
+		type: "get",
+		dataType: "json",
+		success: function(data) {
+			//console.log("지문 :" , data);
+			//console.log("지문 :" , data[0].pasgList[0]);
+			fn_htmlStr(data); //시험지문 
+		},
+		error: function(jqXHR, status, error) {
+			console.log(jqXHR);
+			console.log(status);
+			console.log(error);
+		}
+	});  
+
+}
+init();
+
+
+
+
+//submit 기능 추가하기 
+
+
 
 
 
