@@ -18,6 +18,7 @@
 	</li>
 	</c:forEach>
 </ul>
+<button type="submit">제출</button>
 
 <script>
 
@@ -25,36 +26,73 @@
 //시험지문 
 function fn_htmlStr(data) {
 	
-	console.log("ajaxDataajaxDataajaxDataajaxData :::: " , data);
+	//console.log("ajaxDataajaxDataajaxDataajaxData :::: " , data);
 	
-		
+	
 	let liTags = "";
 	const mun = $(".mun");
-	
-	for (var i = 0; i < data.length; i++) {
-			//console.log("ajaxData" + [i] + " :::: " , data.pasgList[i]);
 
-			/*  liTags = `
+
+	//계속 배열의 마지막 값만 출력됨 진심 짜증남.,...
+	
+	for (let i = 0; i < data.length; i++) {
+				console.log("let i", data[i]);
+
+			for (let j = 0; j < 4; j++) {
+				
+				console.log("let j", data[i].pasgList[j].testPasg);
+			}
+		
+			
+			
+			
+		/* 
+			let num = i+1;
+			
+			liTags = `
 				<li class="items">
-					 <label for="checkNum${data[i].pasgList[i]}">
-						<strong><c:out value="${data[i].pasgList[i] }"></c:out></strong>
-						<input type="checkbox" id="checkNum${data[i].pasgList[i]}" />
-						${pasg.testPasg}
+					 <label for="checkNum\${num}">
+					 	<strong>\${num}</strong>
+						<input type="checkbox" />
+						<strong>\${data[i].pasgList[i].testPasg}</strong>
 					</label>
-				</li> `  */
-				 liTags = $("<li>").append(
-						  $("<label>").attr("for", "checkNum")
-						  ,$("<input>").prop("type", "checkbox").attr("id",i)
-						  ,$("<p>").html(data[i].pasgList[i].testPasg)
-						 
-				);		 	 
-				 mun.append(liTags);
+				</li> ` 
+
+				
+				mun.append(liTags); */
+			
+			
+			
+			
+		
 	}
 	
-
-
-
-
+	
+	
+	
+	
+	/* for (let i = 0; i < data.length; i++) {
+		
+			let num = i+1;
+		
+			liTags = `
+				<li class="items">
+					 <label for="checkNum\${num}">
+					 	<strong>\${num}</strong>
+						<input type="checkbox" />
+						<strong>\${data[i].pasgList[i].testPasg}</strong>
+					</label>
+				</li> ` 
+				
+				/* liTags = $("<li>").append(
+						  $("<label>").attr("for", "checkNum")
+						  ,$("<input>").prop("type", "checkbox")
+						  ,$("<p>").html(data[i].pasgList[i].testPasg)
+						 
+				);	   */
+				
+				//mun.append(liTags);} */
+	
 }
 
 
