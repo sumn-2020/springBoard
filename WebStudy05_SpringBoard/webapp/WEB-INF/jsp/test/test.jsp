@@ -25,74 +25,31 @@
 
 //시험지문 
 function fn_htmlStr(data) {
-	
-	//console.log("ajaxDataajaxDataajaxDataajaxData :::: " , data);
-	
-	
-	let liTags = "";
-	const mun = $(".mun");
+  const mun = $(".mun");
 
+  for (let i = 0; i < data.length; i++) {
+	  
+    const testPasg = data[i].pasgList; // 예상 데이터 구조에서 pasgList를 가져옴
+    let liTags = ""; // 각 반복마다 새로운 liTags 생성
 
-	//계속 배열의 마지막 값만 출력됨 진심 짜증남.,...
-	
-	for (let i = 0; i < data.length; i++) {
-				console.log("let i", data[i]);
+    for (let j = 0; j < testPasg.length; j++) {
+      const pasgList = testPasg[j];
+      console.log("pasgList", pasgList);
 
-			for (let j = 0; j < 4; j++) {
-				
-				console.log("let j", data[i].pasgList[j].testPasg);
-			}
-		
-			
-			
-			
-		/* 
-			let num = i+1;
-			
-			liTags = `
-				<li class="items">
-					 <label for="checkNum\${num}">
-					 	<strong>\${num}</strong>
-						<input type="checkbox" />
-						<strong>\${data[i].pasgList[i].testPasg}</strong>
-					</label>
-				</li> ` 
+      let num = j + 1; // j를 기반으로 번호를 매김
 
-				
-				mun.append(liTags); */
-			
-			
-			
-			
-		
-	}
-	
-	
-	
-	
-	
-	/* for (let i = 0; i < data.length; i++) {
-		
-			let num = i+1;
-		
-			liTags = `
-				<li class="items">
-					 <label for="checkNum\${num}">
-					 	<strong>\${num}</strong>
-						<input type="checkbox" />
-						<strong>\${data[i].pasgList[i].testPasg}</strong>
-					</label>
-				</li> ` 
-				
-				/* liTags = $("<li>").append(
-						  $("<label>").attr("for", "checkNum")
-						  ,$("<input>").prop("type", "checkbox")
-						  ,$("<p>").html(data[i].pasgList[i].testPasg)
-						 
-				);	   */
-				
-				//mun.append(liTags);} */
-	
+      liTags += `
+        <li class="items">
+          <label for="checkNum\${num}">
+            <input type="checkbox" />
+            <p>\${pasgList.testPasg}</p>
+          </label>
+        </li>
+      `;
+    }
+
+    mun.append(liTags); // 각 반복마다 생성된 liTags를 mun에 추가
+  }
 }
 
 
@@ -108,6 +65,10 @@ function init() {
 			//console.log("지문 :" , data);
 			//console.log("지문 :" , data[0].pasgList[0]);
 			fn_htmlStr(data); //시험지문 
+		
+			
+			
+			
 		},
 		error: function(jqXHR, status, error) {
 			console.log(jqXHR);
