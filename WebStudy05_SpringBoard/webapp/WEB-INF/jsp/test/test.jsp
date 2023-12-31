@@ -29,6 +29,14 @@
     </li>
   </c:forEach>
 </ul>
+
+<!-- SUBMIT 해서 INSERT하기 
+ 1) 제출 버튼 클릭하는 순가 SUBMIT 테이블에 INSERT쿼리로 넣기
+ 2) 지문 테이블의 ANSWER과 SUBMIT테이블의 나의 ANSWER이 맞는지 아닌지 비교 후 
+ 3) 몇 점인지 출력 
+  -->
+  
+  
 <button type="submit">제출</button>
 
 <script>
