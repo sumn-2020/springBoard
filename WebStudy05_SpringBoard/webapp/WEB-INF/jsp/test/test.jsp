@@ -9,9 +9,9 @@
 	
 </style>
 
-<ul>
+<ul class="ques_wrap">
   <c:forEach items="${testPasg}" var="ques">
-    <li>
+    <li class="quesLis">
       <span>${ques.testNum}번</span><strong>정답: ${ques.testAns}</strong>
       <p>${ques.testQuest}</p>
       <ol class="mun">
@@ -19,7 +19,7 @@
           <c:if test="${pasgList.testpasgId eq ques.testQId}">
             <li class="items">
               <label>
-                <input type="checkbox" />
+                <input type="radio" name="input_${ques.testQId}" />
                 <p>${pasgList.testPasg}</p>
               </label>
             </li>
@@ -36,7 +36,8 @@
   mun.find(".items").each(function(index) {
     $(this).find("label").attr("for", "input_" + index);
     $(this).find("input").attr("id", "input_" + index);
-  });
+  }); 
+  
 </script>
 
 
