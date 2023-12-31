@@ -52,23 +52,7 @@ public class TestController {
 		return "test/test";
 	}
 	
-	
-	
-	//아작스로 시험지문 빼내기
-	@ResponseBody
-	@RequestMapping("ajaxPasg")
-	public List<TestVO>  testPasg(
-			TestVO testVO
-	) {
-		log.info(" 아작스진입");
-		
-		List<TestVO> testPage = service.testPasgList(testVO);
-		return testPage;
-		
-	}
-	
-	
-	
+
 	
 	
 
