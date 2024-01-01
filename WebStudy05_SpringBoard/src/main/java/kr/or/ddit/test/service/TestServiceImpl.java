@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.test.dao.TestDAO;
+import kr.or.ddit.vo.TestSubmitVO;
 import kr.or.ddit.vo.TestVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,6 +29,19 @@ public class TestServiceImpl implements TestService {
 		List<TestVO> testPasg = dao.testPasgList(testVO);
 		return testPasg;
 	}
+
+
+	/**
+	 * 시험제출 
+	 */
+	@Override
+	public int testSubmit(TestSubmitVO testSubmitVO) {
+		int rowcnt = dao.testSubmit(testSubmitVO);
+		return rowcnt;
+	}
+	
+	
+	
 	
 	
 	

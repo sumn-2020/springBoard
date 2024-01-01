@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.or.ddit.vo.TestSubmitVO;
 import kr.or.ddit.vo.TestVO;
 
 @Mapper
@@ -21,7 +22,12 @@ public interface TestDAO {
 	public List<TestVO> testPasgList(TestVO testVO);
 	
 	
-	
+	/**
+	 * 시험 제출 
+	 * @param testSubmitVO
+	 * @return
+	 */
+	public int testSubmit (TestSubmitVO testSubmitVO);
 	
 	
 }

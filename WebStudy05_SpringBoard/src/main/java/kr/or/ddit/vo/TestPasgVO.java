@@ -14,9 +14,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TestPasgVO {
 
-	private String testpasgId;
-	private String testPasg;
-	private String answState;
+	private String testpasgId; //--지문ID
+	private String testQId; //-- 문제ID(외래키)
+	private String testPasg; // --지문
+	private String answState; // --문제정답여부
 	
 	
 }

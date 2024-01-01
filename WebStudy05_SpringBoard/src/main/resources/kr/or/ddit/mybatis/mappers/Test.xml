@@ -18,10 +18,19 @@
 	</resultMap>
 
 	
+	<!-- 시험문제   -->
 	<select id="testPasgList" resultType="kr.or.ddit.vo.TestVO" resultMap="testMap">
 	select * from TESTQ a, TESTPASG b
-	where a.TESTQ_ID = b.TESTPASG_ID
+	where a.TESTQ_ID = b.TESTQ_ID
 	</select> 
+	
+	
+	
+	<!--  시험 제출  -->
+	<insert id="testSubmit" parameterType="kr.or.ddit.vo.TestSubmitVO">
+	insert into TESTSUBMIT
+	values ('TP'||LPAD(TESTSUBMIT_SEQ.NEXTVAL, 5, '0'), #{testqId}, #{answer})
+	</insert>
 
 
 

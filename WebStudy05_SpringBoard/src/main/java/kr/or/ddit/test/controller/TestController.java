@@ -10,11 +10,14 @@ import org.apache.ibatis.io.ResolverUtil.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ddit.test.service.TestService;
+import kr.or.ddit.vo.TestSubmitVO;
 import kr.or.ddit.vo.TestVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -53,6 +56,18 @@ public class TestController {
 	}
 	
 
+	
+	//시험제출 
+	@ResponseBody
+	@PostMapping("testSubmit")
+	public int testSubmitInsert(
+		TestSubmitVO testSubmitVO
+	) {
+		log.info("아작스 들어옴");
+		
+		int result = service.testSubmit(testSubmitVO);
+		return result;
+	}
 	
 	
 
