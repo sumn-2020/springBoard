@@ -15,10 +15,10 @@
 	<ul class="ques_wrap">
 	 
 	   <c:forEach items="${testPasg}" var="ques">
-	  	<input type="hidden" value="${ques.testQId }" />
+	  	<input type="text" name="testQId" value="${ques.testQId }" />
 	  	
 	    <li class="quesLis">
-	      <span>${ques.testNum}번</span><strong>정답: ${ques.testAns}</strong>
+	      <span>${ques.testNum}번</span><strong>정답: <%-- <span id="testAns" data-test-ans="${ques.testAns}" ></span> --%><span id="testAns">${ques.testAns}</span></strong>
 	      <p>${ques.testQuest}</p>
 	      <ol class="mun">
 	        <c:forEach items="${ques.pasgList}" var="pasgList" varStatus="status">
@@ -57,10 +57,30 @@
   //2) (배열로 만들어서 넘겨지는지 확인하기 )
   //2) 정답비교해서 점수매기기 
   $("#btnSubmit").on('click', function(event){
+
+	  
+	   // 단일값일 경우
+	  //const testId = $('input[name="testQId"]').val();
+	  
+	  // 배열일 경우 -> testId 
+	  const testQIdArry = [];
+	  $('input[name="testQId"]').each(function(i) {
+		  testQIdArry.push($(this).val());
+	  }); 
+	  console.log("testQIdArry" , testQIdArry);
+	  
+
+	  /*  const objParams = {
+		testQId : testQIdArry
+	  }
+	  console.log("objParams:::", objParams); 
+	   */
+
 	  $.ajax({
 			url : "${pageContext.request.contextPath}/test/testSubmit",
 			method : "post",
-			data :  $("#submitForm").serialize(),
+			contentType: "application/json", // 데이터 유형 설정
+			data : JSON.stringify(testQIdArry), 
 			dataType:"json",
 			success : function(resp) {
 				
